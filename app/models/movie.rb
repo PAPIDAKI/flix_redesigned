@@ -1,4 +1,15 @@
 class Movie < ActiveRecord::Base
+  RATINGS=%w(G PG PG-13 R NC-17)
+  validates :title,:released_on,:duration,presence: true
+  validates :description,length: {minimum:25}
+  validates :total_gross,numericality:{greater_equal_to:0}
+  validates :image_file_name,allow_blank:true,format:{
+                                with:/\w+\.(jpg|png|jpeg|jif)\z/i,
+                                message: "must be a GIF or JPG or PNG or JPEG image"
+                            }
+  validates :rating,inclusion:{in: RATINGS}
+
+
   def self.released
     where("released_on <= ?", Time.now).order("released_on desc")
   end
