@@ -27,9 +27,25 @@
   <p>
     <%= format_total_gross(@movie) %>
   </p>
+  <h3>Average Reviews</h3>
+  <p>
+    <%=format_average_stars(@movie)%>
+  </p>
 
-  <%=link_to pluralize(@movie.reviews.size,"review"),movie_reviews_path(@movie)%>
-  
+  <% if @movie.recent_reviews.any?%>
+  <h3>Recent Reviews</h3>
+      <ol id="reviews">
+        <% @movie.recent_reviews.each do |review|%>
+        <li><%=review.comment%></li>
+        <%end%>
+      </ol>
+      <p>
+        Read all  <%=link_to pluralize(@movie.reviews.size,"review"),movie_reviews_path(@movie)%>
+      </p>
+  <%end%>
+
+
+
   <footer>
     <nav>
       <%= link_to 'Edit', edit_movie_path(@movie), class: 'button' %>

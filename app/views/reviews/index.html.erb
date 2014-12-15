@@ -7,8 +7,8 @@
   <%@reviews.each do |r|%>
       <p>
       <li><%=pluralize(r.stars,'star')%>  by <%= r.name %></li>
-      <%=r.comment%>
-      (<%=time_ago_in_words(r.created_at) %> ago)
+      <%=link_to r.comment ,movie_review_path(@movie,r) %>
+      (<%=time_ago_in_words(r.created_at) %> ago)%>
 
       </p>
 

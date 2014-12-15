@@ -1,0 +1,7 @@
+<h2>Review for <%=@movie.title%> from <%=@review.name%></h2>
+<p>
+  <%=@review.comment%>
+</p>
+<p>
+  <%=link_to "Delete Review",movie_review_path(@movie,@review),class:'button',method: :delete,data:{confirm:'Are you sure'}%>
+</p>
