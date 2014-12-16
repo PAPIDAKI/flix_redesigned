@@ -4,5 +4,7 @@ class User < ActiveRecord::Base
   validates :name,presence:true
   validates :email,presence:true ,format:/\A\S+@\S+\z/,
              uniqueness: {case_sensitive:false}
-  validates :pasword ,length:{minimum:3,allow_blank:true}
+  validates :password ,length:{minimum:3,allow_blank:true}
+  validates :username ,presence:true,format:/\A[A-Z0-9]+\z/i,
+             uniqueness:{case_insensitive:true}
 end
