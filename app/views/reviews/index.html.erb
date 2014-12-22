@@ -2,13 +2,13 @@
   <h1>Reviews for <%=link_to(@movie.title,@movie)%></h1>
 </header>
 
-
+<hr>
 <ol>
   <%@reviews.each do |r|%>
       <p>
-      <li><%=pluralize(r.stars,'star')%>  by <%= r.name %></li>
-      <%=link_to r.comment ,movie_review_path(@movie,r) %>
-      (<%=time_ago_in_words(r.created_at) %> ago)%>
+      <li><%=pluralize(r.stars,'star')%>  by <%=r.user.name %></li>
+      <%=r.comment  %>
+      (<%=time_ago_in_words(r.created_at) %> ago)
 
       </p>
 
