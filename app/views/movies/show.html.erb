@@ -14,6 +14,16 @@
   </h3>
 
   <p>
+    <% if current_user%>
+        <%if @current_favorite%>
+            <%= button_to 'Unfave',movie_favorite_path(@movie,@current_favorite),method: :delete,class:'button unfave' %>
+            <%else%>
+        <%=button_to "Fave",movie_favorites_path(@movie),class:'button' %>
+            <%end%>
+    <%end%>
+  </p>
+
+  <p>
     <%=pluralize(@fans.size,'fan')%>
   </p>
   <p>
@@ -28,6 +38,7 @@
       </ul>
       <%end%>
   </p>
+
   
   <h3>Cast</h3>
   <p>

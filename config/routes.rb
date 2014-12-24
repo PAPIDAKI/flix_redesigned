@@ -1,5 +1,4 @@
 Flix::Application.routes.draw do
-  resources :favorites
 
   get 'signin'=>"sessions#new"
   get 'signup'=>"users#new"
@@ -7,8 +6,11 @@ Flix::Application.routes.draw do
   resource :session
 
   root "movies#index"
+
   resources :movies do
       resources :reviews
-    end
+      resources :favorites
+
+  end
 
 end
