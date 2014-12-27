@@ -1,0 +1,16 @@
+<header id="content-header">
+  <h1>Movie Genres</h1>
+</header>
+
+<hr>
+<ol>
+  <%=pluralize(@genres.count,'genre')%>
+  <%@genres.each do |g|%>
+      <p>
+      <li>
+      <%=link_to(g.name,g) %>  <%=link_to 'Delete',@genre,method: :delete%></li>
+      </p>
+
+  <%end%>
+</ol>
+
