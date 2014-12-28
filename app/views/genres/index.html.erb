@@ -5,10 +5,10 @@
 <hr>
 <ol>
   <%=pluralize(@genres.count,'genre')%>
+  <%=link_to 'Add  Genre',new_genre_path%>
   <%@genres.each do |g|%>
       <p>
-      <li>
-      <%=link_to(g.name,g) %>  <%=link_to 'Delete',@genre,method: :delete%></li>
+      <li><%=link_to(g.name,g) %> <%=link_to 'Delete',genre_path(g),method: :delete,class:'button'%></li>
       </p>
 
   <%end%>

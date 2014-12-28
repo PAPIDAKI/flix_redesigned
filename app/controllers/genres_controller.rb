@@ -16,8 +16,8 @@ class GenresController < ApplicationController
 	end
 
 	def create
-		@genre=Genre.find(params[:id])
-		if @genre.save(genre_params)
+		@genre=Genre.new(genre_params)
+		if @genre.save
 			redirect_to genres_path,notice:"Genre created successfuly!"
 		else
 			render :new
