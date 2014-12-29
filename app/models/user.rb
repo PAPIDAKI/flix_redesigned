@@ -13,6 +13,13 @@ class User < ActiveRecord::Base
              uniqueness:{case_insensitive:true}
 
 
+  scope :by_name,->{order :name}
+  scope :admins,->{where(admin: true)}
+  scope :not_admins,->{where(admin: false)}
+
+
+
+
 
   def self.authenticate(email,password)
   user=User.find_by(email:email )
